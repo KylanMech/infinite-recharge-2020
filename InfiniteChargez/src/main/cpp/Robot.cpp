@@ -15,6 +15,7 @@
 #include <iostream>
 #include <thread>
 #include <frc/Filesystem.h>
+#include "FileConstants.h"
 
 #include <frc/smartdashboard/SmartDashboard.h>
 
@@ -101,7 +102,6 @@ void Robot::TeleopInit()
   recordingBuffer.open(recordBufferName);
 }
 
-
 void Robot::TeleopPeriodic()
 { 
   std::cout << leController.GetStartButton() << '\n';
@@ -111,7 +111,9 @@ void Robot::TeleopPeriodic()
   OdometryTests();
 
   leInputHandler = leController;
-  //std::cout << leInputHandler.getSnapshot() << '\n';
+  //std::string snap = leInputHandler.getSnapshot();
+  //leInputHandler = snap;
+  std::cout << leInputHandler.getSnapshot() << '\n';
   checkAndExec(leInputHandler);
   recordActionsExec(leInputHandler, delta, recordingBuffer);
   

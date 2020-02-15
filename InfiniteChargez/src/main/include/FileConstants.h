@@ -5,8 +5,8 @@ namespace utilities
 {
     namespace filez
     {
-        const std::string HOME_DIR[]{"/home/lvuser/"};
-        const std::string DEPLOY_DIR[]{"/home/lvuser/deploy/"};
+        std::string HOME_DIR[]{"/home/lvuser/"};
+        std::string DEPLOY_DIR[]{"/home/lvuser/deploy/"};
     }
 }
 #endif

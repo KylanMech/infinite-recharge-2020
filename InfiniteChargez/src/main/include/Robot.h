@@ -33,8 +33,8 @@
 class Robot : public frc::TimedRobot 
 {
 private:
-  const std::string inputRecordFileName{"InputRecord.rcd"};
-  const std::string recordBufferName{"InputRecordBuffer.rcd"};
+  const std::string inputRecordFileName{"/home/lvuser/InputRecord.rcd"};
+  const std::string recordBufferName{"/home/lvuser/InputRecordBuffer.rcd"};
   bool tankMode{false};
   //Configuration constants will go here until a configuration system can be set up
   using joystick_t = frc::Joystick;
