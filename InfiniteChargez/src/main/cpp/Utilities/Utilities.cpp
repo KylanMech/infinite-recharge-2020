@@ -48,4 +48,18 @@ namespace utilities
         return units::meter_t{accel.to<double>() * 0.5 * (delta.count() * delta.count())};
     }
 
+    template<class T> 
+    T parseSSV(const std::string &str, std::size_t &i)
+    {
+        assert(false && "TYPE NOT SUPPORTED");
+        return T;
+    }
+
+    template<> double parseSSV(const std::string &str, std::size_t &i) 
+    {
+           i = str.find(" ", i + 1);
+        
+        return std::stod(str.substr)
+    }
+
 }

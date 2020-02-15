@@ -149,10 +149,11 @@ namespace utilities
         //Joystick
         joystick_t joystickLeft{std::stod(snapshot, &i), std::stod(snapshot, &i)};
         joystick_t joystickRight{std::stod(snapshot, &i), std::stod(snapshot, &i)};
+        //std::cout << getJoystickLeft().y;
 
-        setJoystickRight(joystickLeft);
+        setJoystickLeft(joystickLeft);
 
-        setJoystickLeft(joystickRight);
+        setJoystickRight(joystickRight);
         
         //Button Functions
         //Button A
