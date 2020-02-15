@@ -51,8 +51,9 @@ namespace utilities
     template<class T> 
     T parseSSV(const std::string &str, std::size_t &i)
     {
+        T placer;
         assert(false && "TYPE NOT SUPPORTED");
-        return T;
+        return placer;
     }
 
     template<> 
