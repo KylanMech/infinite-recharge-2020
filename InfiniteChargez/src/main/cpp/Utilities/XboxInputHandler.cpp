@@ -147,8 +147,8 @@ namespace utilities
     {
         std::size_t i{0};
         //Joystick
-        joystick_t joystickLeft{std::stod(snapshot, &i), std::stod(snapshot, &i)};
-        joystick_t joystickRight{std::stod(snapshot, &i), std::stod(snapshot, &i)};
+        joystick_t joystickLeft{utilities::parseSSV<double>(snapshot, i), utilities::parseSSV<double>(snapshot, i)};
+        joystick_t joystickRight{utilities::parseSSV<double>(snapshot, i), utilities::parseSSV<double>(snapshot, i)};
         //std::cout << getJoystickLeft().y;
 
         setJoystickLeft(joystickLeft);
