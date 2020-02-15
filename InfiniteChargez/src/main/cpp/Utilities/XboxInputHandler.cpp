@@ -175,9 +175,9 @@ namespace utilities
 
         //Triggers
         //Triger Left
-        setTriggerLeft(std::stod(snapshot, &i));
+        setTriggerLeft(utilities::parseSSV<double>(snapshot, i));
         //Trigger Right
-        setTriggerRight(std::stod(snapshot, &i));
+        setTriggerRight(utilities::parseSSV<double>(snapshot, i));
 
         //Bumper
         //Bumper Left
