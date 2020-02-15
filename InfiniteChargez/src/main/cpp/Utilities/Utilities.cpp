@@ -55,11 +55,19 @@ namespace utilities
         return T;
     }
 
-    template<> double parseSSV(const std::string &str, std::size_t &i) 
+    template<> 
+    double parseSSV(const std::string &str, std::size_t &i) 
     {
-           i = str.find(" ", i + 1);
-        
-        return std::stod(str.substr)
+        double parsed{std::stod(str.substr(i))};
+        i = str.find(" ", i + 1);
+        return parsed;
     }
 
+    template<> 
+    int parseSSV(const std::string &str, std::size_t &i) 
+    {
+        int parsed{std::stoi(str.substr(i))};
+        i = str.find(" ", i + 1);
+        return parsed;
+    }
 }
