@@ -157,21 +157,21 @@ namespace utilities
         
         //Button Functions
         //Button A
-        setButtonAState(std::stoi(snapshot, &i));
-        setButtonAPressed(std::stoi(snapshot, &i));
-        setButtonAReleased(std::stoi(snapshot, &i));
+        setButtonAState(utilities::parseSSV<int>(snapshot, i));
+        setButtonAPressed(utilities::parseSSV<int>(snapshot, i));
+        setButtonAReleased(utilities::parseSSV<int>(snapshot, i));
         //Button B
-        setButtonBState(std::stoi(snapshot, &i));
-        setButtonBPressed(std::stoi(snapshot, &i));
-        setButtonBReleased(std::stoi(snapshot, &i));
+        setButtonBState(utilities::parseSSV<int>(snapshot, i));
+        setButtonBPressed(utilities::parseSSV<int>(snapshot, i));
+        setButtonBReleased(utilities::parseSSV<int>(snapshot, i));
         //Button X
-        setButtonXState(std::stoi(snapshot, &i));
-        setButtonXPressed(std::stoi(snapshot, &i));
-        setButtonXReleased(std::stoi(snapshot, &i));
+        setButtonXState(utilities::parseSSV<int>(snapshot, i));
+        setButtonXPressed(utilities::parseSSV<int>(snapshot, i));
+        setButtonXReleased(utilities::parseSSV<int>(snapshot, i));
         //Button Y
-        setButtonYState(std::stoi(snapshot, &i));
-        setButtonYPressed(std::stoi(snapshot, &i));
-        setButtonYReleased(std::stoi(snapshot, &i));
+        setButtonYState(utilities::parseSSV<int>(snapshot, i));
+        setButtonYPressed(utilities::parseSSV<int>(snapshot, i));
+        setButtonYReleased(utilities::parseSSV<int>(snapshot, i));
 
         //Triggers
         //Triger Left
@@ -181,32 +181,32 @@ namespace utilities
 
         //Bumper
         //Bumper Left
-        setBumperLeftState(std::stoi(snapshot, &i));
-        setBumperLeftPressed(std::stoi(snapshot, &i));
-        setBumperLeftReleased(std::stoi(snapshot, &i));
+        setBumperLeftState(utilities::parseSSV<int>(snapshot, i));
+        setBumperLeftPressed(utilities::parseSSV<int>(snapshot, i));
+        setBumperLeftReleased(utilities::parseSSV<int>(snapshot, i));
         //Bumper Right
-        setBumperRightState(std::stoi(snapshot, &i));
-        setBumperRightPressed(std::stoi(snapshot, &i));
-        setBumperRightReleased(std::stoi(snapshot, &i));
+        setBumperRightState(utilities::parseSSV<int>(snapshot, i));
+        setBumperRightPressed(utilities::parseSSV<int>(snapshot, i));
+        setBumperRightReleased(utilities::parseSSV<int>(snapshot, i));
 
         //Stick Buttons
         //Left Stick Button
-        setButtonLeftStickState(std::stoi(snapshot, &i));
-        setButtonLeftStickPressed(std::stoi(snapshot, &i));
-        setButtonLeftStickReleased(std::stoi(snapshot, &i));
+        setButtonLeftStickState(utilities::parseSSV<int>(snapshot, i));
+        setButtonLeftStickPressed(utilities::parseSSV<int>(snapshot, i));
+        setButtonLeftStickReleased(utilities::parseSSV<int>(snapshot, i));
         //Right Stick Button
-        setButtonRightStickState(std::stoi(snapshot, &i));
-        setButtonRightStickPressed(std::stoi(snapshot, &i));
-        setButtonRightStickReleased(std::stoi(snapshot, &i));
+        setButtonRightStickState(utilities::parseSSV<int>(snapshot, i));
+        setButtonRightStickPressed(utilities::parseSSV<int>(snapshot, i));
+        setButtonRightStickReleased(utilities::parseSSV<int>(snapshot, i));
 
         //Back and Start button
         //Start Button
-        setButtonStartState(std::stoi(snapshot, &i));
-        setButtonStartPressed(std::stoi(snapshot, &i));
-        setButtonStartReleased(std::stoi(snapshot, &i));
+        setButtonStartState(utilities::parseSSV<int>(snapshot, i));
+        setButtonStartPressed(utilities::parseSSV<int>(snapshot, i));
+        setButtonStartReleased(utilities::parseSSV<int>(snapshot, i));
         //Back Button
-        setButtonBackState(std::stoi(snapshot, &i));
-        setButtonBackPressed(std::stoi(snapshot, &i));
-        setButtonBackReleased(std::stoi(snapshot, &i));
+        setButtonBackState(utilities::parseSSV<int>(snapshot, i));
+        setButtonBackPressed(utilities::parseSSV<int>(snapshot, i));
+        setButtonBackReleased(utilities::parseSSV<int>(snapshot, i));
     }
 }
