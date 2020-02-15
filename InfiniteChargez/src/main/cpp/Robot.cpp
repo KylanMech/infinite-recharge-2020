@@ -29,10 +29,9 @@ void Robot::OdometryTests()
 }
 
 Robot::Robot():
-  leAccelerometer{frc::BuiltInAccelerometer::kRange_8G},
+  frc::TimedRobot{5_ms}, leAccelerometer{frc::BuiltInAccelerometer::kRange_8G},
   lastSnapshot{clock_t::now()}
 {
-  
 
 }
 
@@ -41,7 +40,6 @@ void Robot::RobotInit()
   m_chooser.SetDefaultOption(kAutoNameDefault, kAutoNameDefault);
   m_chooser.AddOption(kAutoNameCustom, kAutoNameCustom);
   frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
-
 }
 
 /**
