@@ -3,12 +3,14 @@
 #include "HandlesChecksAndExecs.h"
 #include "InputHandler.h"
 
+#include <chrono>
 #include <thread>
 #include <fstream>
 namespace utilities
 {
     class InputPlayer
     {
+    using duration_t = std::chrono::duration<double>;
     public:
         InputPlayer () {};
 
@@ -20,7 +22,7 @@ namespace utilities
         std::ifstream *m_recordingFile{};
         std::thread m_recordingThread{};
 
-        void playRecordingExec(InputHandler &inputHandler, HandlesChecksAndExecs &probablyARobot, double delta);
+        void playRecordingExec(InputHandler &inputHandler, HandlesChecksAndExecs &probablyARobot, duration_t delta);
         
 
 
