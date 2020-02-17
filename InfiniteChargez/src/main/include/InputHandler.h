@@ -5,8 +5,8 @@ namespace utilities
 {
     class InputHandler
     {
-        using snapshot_t = std::string;
     public:
+        using snapshot_t = std::string;
         /**
          * Space separated values of all input values that can be passed.
          * Spaces are escaped via \ 
