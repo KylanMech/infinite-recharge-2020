@@ -18,9 +18,9 @@ namespace utilities
         void stop();
     private:
         std::ifstream *m_recordingFile{};
-        std::thread recordingThread{};
+        std::thread m_recordingThread{};
 
-        void playRecordingExec(InputHandler &inputHandler, HandlesChecksAndExecs &probablyARobot);
+        void playRecordingExec(InputHandler &inputHandler, HandlesChecksAndExecs &probablyARobot, double delta);
         
 
 
