@@ -1,5 +1,7 @@
 #include "InputRecorder.h"
 
+#include <sstream>
+#include <string>
 #include <thread>
 
 namespace utilities
@@ -15,7 +17,23 @@ namespace utilities
 
     void InputRecorder::snapFrom(HandlesChecksAndExecs &probablyARobot)
     {
-        *m_recording << probablyARobot.getInputHandler().getSnapshot() << '\n';
+        m_recordingBuffer << probablyARobot.getInputHandler().getSnapshot() << '\n';
+    }
+
+    void InputRecorder::stopRecording()
+    {
+    }
+
+    void InputRecorder::stopRecording(std::chrono::duration<double> delta)
+    {
+        std::string line{""};
+
+        *m_recording << delta.count() << '\n';
+
+    while (std::getline(m_recordingBuffer, line))
+        {
+            *m_recording << line << '\n';
+        }
     }
 
 

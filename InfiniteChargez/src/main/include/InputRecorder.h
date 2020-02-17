@@ -2,8 +2,9 @@
 #define YEET_INPUT_RECORDER_H
 #include "HandlesChecksAndExecs.h"
 
+#include <chrono>
 #include <fstream>
-#include <string>
+#include <sstream>
 
 namespace utilities
 {
@@ -16,10 +17,13 @@ namespace utilities
     void recordFrom(HandlesChecksAndExecs &probablyARobot);
     void snapFrom(HandlesChecksAndExecs &probablyARobot);
     void stopRecording();
+    void stopRecording(std::chrono::duration<double> delta);
 
     private:
     std::ofstream *m_recording{};
-    std::string m_recordingBuffer{};
+    std::stringstream m_recordingBuffer{};
+
+    void snap();
     };
 }
 #endif
