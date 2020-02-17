@@ -12,6 +12,8 @@ namespace utilities
 
     void designateFile(std::ofstream &recordingFile);
     void recordFrom(HandlesChecksAndExecs &probablyARobot);
+    void snapFrom(HandlesChecksAndExecs &probablyARobot);
+
     private:
     std::ofstream *m_recording{};
     };
