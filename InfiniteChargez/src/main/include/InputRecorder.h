@@ -3,6 +3,8 @@
 #include "HandlesChecksAndExecs.h"
 
 #include <fstream>
+#include <string>
+
 namespace utilities
 {
     class InputRecorder
@@ -13,9 +15,11 @@ namespace utilities
     void designateFile(std::ofstream &recordingFile);
     void recordFrom(HandlesChecksAndExecs &probablyARobot);
     void snapFrom(HandlesChecksAndExecs &probablyARobot);
+    void stopRecording();
 
     private:
     std::ofstream *m_recording{};
+    std::string m_recordingBuffer{};
     };
 }
 #endif
