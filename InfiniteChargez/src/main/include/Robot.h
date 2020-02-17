@@ -8,7 +8,7 @@
 #define YEET_LE_MOST_AMAZING_ROBOT_IN_THE_WORLD
  #pragma once
 
-#include "ChecksAndExecs.h"
+#include "HandlesChecksAndExecs.h"
 #include "ControlCheckExec.h"
 #include "XboxInputHandler.h"
 #include "Pair2D.h"
@@ -31,7 +31,7 @@
 
 #include <fstream>
 
-class Robot : public frc::TimedRobot, public utilities::ChecksAndExecs
+class Robot : public frc::TimedRobot, public utilities::HandlesChecksAndExecs
 {
 private:
   const std::string inputRecordFileName{"/home/lvuser/InputRecord.rcd"};
@@ -96,6 +96,8 @@ private:
   void AutonomousPeriodic() override;
   void TeleopInit() override;
   void TeleopPeriodic() override;
+
+  handler_t& getInputHandler() {return leInputHandler;}
   private:
   bool isRecording{false}; //Really hacky, will remain until the deeper WPLIB api documentation can be discovered *Indiana Jones Music*
   bool recordingEnabled{true};
