@@ -1,5 +1,6 @@
 #ifndef YEET_XBOX_INPUT_HANDLER_H
 #define YEET_XBOX_INPUT_HANDLER_H
+#include "InputHandler.h"
 #include "Pair2D.h"
 
 #include <inttypes.h>
@@ -7,7 +8,7 @@
 #include <frc/XboxController.h>
 namespace utilities
 {
-    class XboxInputHandler
+    class XboxInputHandler : public InputHandler
     {
     public:
     using joystick_t = utilities::Pair2D<double>;
