@@ -1,5 +1,7 @@
 #ifndef YEET_INPUT_RECORD_AND_PLAY
 #define YEET_INPUT_RECORD_AND_PLAY
+#include "InputPlayer.h"
+#include "InputRecorder.h"
 #include "HandlesChecksAndExecs.h"
 #include "XboxInputHandler.h"
 
@@ -20,6 +22,9 @@ namespace utilities
         void stopLoadedRecording();
 
         void recordFromAndTo(HandlesChecksAndExecs &probablyARobot, std::ofstream &outputFile);
+    private:
+    InputRecorder m_recorder{};
+    InputPlayer m_player{};
     };
 }
 #endif
