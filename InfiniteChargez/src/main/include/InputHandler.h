@@ -17,7 +17,7 @@ namespace utilities
          * equal to an InputHandler that has the same state that generated
          * the same string
          */
-        virtual void operator=(const InputHandler &inputHandler) = 0;
+        virtual void operator=(const snapshot_t &snapshot) = 0;
     };
 }
 #endif
