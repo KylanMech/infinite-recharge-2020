@@ -1,21 +1,25 @@
 #ifndef YEET_INPUT_RECORD_AND_PLAY
 #define YEET_INPUT_RECORD_AND_PLAY
+#include "HandlesChecksAndExecs.h"
 #include "XboxInputHandler.h"
 
 #include <fstream>
 #include <string>
 namespace utilities
 {
-    class InputScribe
+    class InputRecordAndPlay
     {
     public:
-        InputScribe() {}
+        InputRecordAndPlay() {}
 
         void loadRecording(std::ifstream &recordingFile);
-        void playLoadedRecording();
+
+        void playLoadedRecordingTo(utilities::XboxInputHandler);
+        void playLoadedRecordingToAndExec(HandlesChecksAndExecs &probablyARobot);
         void pauseLoadedRecording();
         void stopLoadedRecording();
-        void record(std::ofstream &outputFile);
+
+        void recordFromAndTo(HandlesChecksAndExecs &probablyARobot, std::ofstream &outputFile);
     };
 }
 #endif
