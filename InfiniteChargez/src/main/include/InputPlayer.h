@@ -3,18 +3,27 @@
 #include "HandlesChecksAndExecs.h"
 #include "InputHandler.h"
 
+#include <thread>
 #include <fstream>
 namespace utilities
 {
-    class InputRecorder
+    class InputPlayer
     {
     public:
-        InputRecorder() {};
+        InputPlayer () {};
 
         void load(std::ifstream &recordingFile);
         void playTo(InputHandler &inputhandler);
         void playToAndExec(InputHandler &inputHandler, HandlesChecksAndExecs &probablyARobot);
         void stop();
+    private:
+        std::ifstream *m_recordingFile{};
+        std::thread recordingThread{};
+
+        void playRecordingExec(InputHandler &inputHandler, HandlesChecksAndExecs &probablyARobot);
+        
+
+
     };
 }
 #endif
