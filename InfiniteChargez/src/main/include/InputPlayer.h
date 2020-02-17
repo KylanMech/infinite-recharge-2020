@@ -16,13 +16,13 @@ namespace utilities
 
         void load(std::ifstream &recordingFile);
         void playTo(InputHandler &inputhandler);
-        void playToAndExec(InputHandler &inputHandler, HandlesChecksAndExecs &probablyARobot);
+        void playToAndExec(HandlesChecksAndExecs &probablyARobot);
         void stop();
     private:
         std::ifstream *m_recordingFile{};
         std::thread m_recordingThread{};
 
-        void playRecordingExec(InputHandler &inputHandler, HandlesChecksAndExecs &probablyARobot, duration_t delta);
+        void playRecordingExec(HandlesChecksAndExecs &probablyARobot, duration_t delta);
         
 
 
