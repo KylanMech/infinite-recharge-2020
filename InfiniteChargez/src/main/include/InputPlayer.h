@@ -15,9 +15,9 @@ namespace utilities
         InputPlayer () {};
 
         void load(std::ifstream &recordingFile);
-        void playTo(InputHandler &inputhandler);
+        //void playTo(InputHandler &inputhandler);
         void playToAndExec(HandlesChecksAndExecs &probablyARobot);
-        void stop();
+        //void stop();
     private:
         std::ifstream *m_recordingFile{};
         std::thread m_recordingThread{};

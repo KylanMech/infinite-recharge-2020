@@ -16,10 +16,10 @@ namespace utilities
 
         void loadRecording(std::ifstream &recordingFile);
 
-        void playLoadedRecordingTo(utilities::XboxInputHandler);
+        //void playLoadedRecordingTo(utilities::XboxInputHandler);
         void playLoadedRecordingToAndExec(HandlesChecksAndExecs &probablyARobot);
-        void pauseLoadedRecording();
-        void stopLoadedRecording();
+        //void pauseLoadedRecording();
+        //void stopLoadedRecording();
         void recordFromAndTo(HandlesChecksAndExecs &probablyARobot, std::ofstream &outputFile);
         void stopRecording();
     private:

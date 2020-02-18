@@ -16,7 +16,7 @@ namespace utilities
     void designateFile(std::ofstream &recordingFile);
     void recordFrom(HandlesChecksAndExecs &probablyARobot);
     void snapFrom(HandlesChecksAndExecs &probablyARobot);
-    void stopRecording();
+    //void stopRecording();
     void stopRecording(std::chrono::duration<double> delta);
 
     private:
