@@ -10,27 +10,26 @@
 
 #include "HandlesChecksAndExecs.h"
 #include "InputRecordAndPlay.h"
-#include "ControlCheckExec.h"
 #include "XboxInputHandler.h"
 #include "Pair2D.h"
 
-#include <string>
-#include <frc/kinematics/DifferentialDriveOdometry.h>
-#include <frc/geometry/Rotation2d.h>
-#include <frc/geometry/Pose2d.h>
-#include <frc/Joystick.h>
-#include <frc/SpeedControllerGroup.h>
-#include <frc/TimedRobot.h>
-#include <frc/smartdashboard/SendableChooser.h>
-#include <frc/XboxController.h>
-#include <frc/drive/DifferentialDrive.h>
-#include <frc/BuiltInAccelerometer.h>
-#include <frc/geometry/Pose2d.h>
-#include <ctre/phoenix/motorcontrol/can/WPI_VictorSPX.h>
-
 #include <adi/ADIS16448_IMU.h>
 
+#include <ctre/phoenix/motorcontrol/can/WPI_VictorSPX.h>
+
+#include <frc/BuiltInAccelerometer.h>
+#include <frc/drive/DifferentialDrive.h>
+#include <frc/geometry/Pose2d.h>
+#include <frc/geometry/Rotation2d.h>
+#include <frc/Joystick.h>
+#include <frc/kinematics/DifferentialDriveOdometry.h>
+#include <frc/smartdashboard/SendableChooser.h>
+#include <frc/SpeedControllerGroup.h>
+#include <frc/TimedRobot.h>
+#include <frc/XboxController.h>
+
 #include <fstream>
+#include <string>
 
 class Robot : public frc::TimedRobot, public utilities::HandlesChecksAndExecs
 {

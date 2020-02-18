@@ -6,18 +6,18 @@
 /*----------------------------------------------------------------------------*/
 
 #include "Robot.h"
-
-#include <units/units.h>
-#include <frc/geometry/Rotation2d.h>
-#include <frc/geometry/Pose2d.h>
-#include <frc/BuiltInAccelerometer.h>
-#include <iostream>
-#include <thread>
-#include <frc/Filesystem.h>
 #include "FileConstants.h"
 
+#include <frc/BuiltInAccelerometer.h>
+#include <frc/Filesystem.h>
+#include <frc/geometry/Pose2d.h>
+#include <frc/geometry/Rotation2d.h>
 #include <frc/smartdashboard/SmartDashboard.h>
 
+#include <units/units.h>
+
+#include <iostream>
+#include <thread>
 void Robot::OdometryTests()
 {
   //std::cout << "Built Int Acceleration X: " << leAccelerometer.GetX() << " Y: " << leAccelerometer.GetY() << '\n';
