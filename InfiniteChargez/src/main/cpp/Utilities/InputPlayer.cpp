@@ -25,7 +25,6 @@ namespace utilities
     
     void InputPlayer::stop()
     {
-
     }
     
     void InputPlayer::playRecordingExec(HandlesChecksAndExecs &probablyARobot, duration_t delta)

@@ -24,5 +24,4 @@ void InputRecordAndPlay::recordFromAndTo(HandlesChecksAndExecs &probablyARobot, 
     m_recorder.recordFrom(probablyARobot);
 }
 
-
 }
