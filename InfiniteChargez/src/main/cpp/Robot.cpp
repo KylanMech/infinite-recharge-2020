@@ -68,8 +68,10 @@ void Robot::RobotPeriodic()
  */
 void Robot::AutonomousInit() 
 {
-  std::thread recording(executeRecording, this);
-  recording.detach();
+  m_recordReadFile.open(inputRecordFileName);
+
+  m_leRecordScribe.loadRecording(m_recordReadFile);
+  m_leRecordScribe.playLoadedRecordingToAndExec(*this);
 
   m_autoSelected = m_chooser.GetSelected();
   // m_autoSelected = SmartDashboard::GetString("Auto Selector",
@@ -97,7 +99,7 @@ void Robot::AutonomousPeriodic()
 
 void Robot::TeleopInit()
 {
-  recordingBuffer.open(recordBufferName);
+  m_recordFile.open(recordBufferName);
 }
 
 void Robot::TeleopPeriodic()
@@ -112,7 +114,7 @@ void Robot::TeleopPeriodic()
   //std::string snap = leInputHandler.getSnapshot();
   //leInputHandler = snap;
   std::cout << leInputHandler.getSnapshot() << '\n';
-  checkAndExec(leInputHandler);
+  checkAndExec();
   recordActionsExec(leInputHandler, delta, recordingBuffer);
   
 }

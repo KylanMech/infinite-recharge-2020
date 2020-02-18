@@ -8,6 +8,8 @@
 #define YEET_LE_MOST_AMAZING_ROBOT_IN_THE_WORLD
  #pragma once
 
+#include "HandlesChecksAndExecs.h"
+#include "InputRecordAndPlay.h"
 #include "ControlCheckExec.h"
 #include "XboxInputHandler.h"
 #include "Pair2D.h"
@@ -30,11 +32,13 @@
 
 #include <fstream>
 
-class Robot : public frc::TimedRobot 
+class Robot : public frc::TimedRobot, public utilities::HandlesChecksAndExecs
 {
 private:
   const std::string inputRecordFileName{"/home/lvuser/InputRecord.rcd"};
   const std::string recordBufferName{"/home/lvuser/InputRecordBuffer.rcd"};
+  std::ofstream m_recordFile{};
+  std::ifstream m_recordReadFile{};
   bool tankMode{false};
   //Configuration constants will go here until a configuration system can be set up
   using joystick_t = frc::Joystick;
@@ -87,6 +91,7 @@ private:
 
  public:
   Robot();
+  void checkAndExec();
   void OdometryTests();
   void RobotInit() override;
   void RobotPeriodic() override;
@@ -94,6 +99,8 @@ private:
   void AutonomousPeriodic() override;
   void TeleopInit() override;
   void TeleopPeriodic() override;
+
+  handler_t& getInputHandler() {return leInputHandler;}
   private:
   bool isRecording{false}; //Really hacky, will remain until the deeper WPLIB api documentation can be discovered *Indiana Jones Music*
   bool recordingEnabled{true};
@@ -128,12 +135,13 @@ private:
     frc::SpeedControllerGroup driveMotorsLeft{driveMotorFrontLeft, driveMotorBackLeft};
     frc::SpeedControllerGroup driveMotorsRight{driveMotorFrontRight, driveMotorBackRight};
 
+  //Recording Utilities
+  utilities::InputRecordAndPlay m_leRecordScribe{};
     //Recording Utilities
-    friend void executeRecording(Robot *robot);
     void recordActionsExec(utilities::XboxInputHandler &leInputHandler);
+    
 
     //Input checking funcitons
-    void checkAndExec(handler_t &leInputHandler);
     void recordActionsExec(utilities::XboxInputHandler &leInputHandler, duration_t delta, std::ofstream &recordBuffer);
     void joystickPosition(utilities::XboxInputHandler::joystick_t &&joystickLeft, utilities::XboxInputHandler::joystick_t &&joystickRight);
     void buttonA();
@@ -156,5 +164,4 @@ private:
   std::string m_autoSelected;
 };
 
-void executeRecording(Robot *robot);
 #endif

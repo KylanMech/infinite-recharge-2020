@@ -1,5 +1,6 @@
 #ifndef YEET_XBOX_INPUT_HANDLER_H
 #define YEET_XBOX_INPUT_HANDLER_H
+#include "InputHandler.h"
 #include "Pair2D.h"
 
 #include <inttypes.h>
@@ -7,15 +8,13 @@
 #include <frc/XboxController.h>
 namespace utilities
 {
-    class XboxInputHandler
+    class XboxInputHandler : public InputHandler
     {
     public:
     using joystick_t = utilities::Pair2D<double>;
     using bitmask_t = std::uint8_t;
     using button_t = std::uint8_t;
     using trigger_t = double;
-
-    using snapshot_t = std::string;
 
     private:
     static constexpr bitmask_t ButtonStateMask{1 << 0};
@@ -25,7 +24,7 @@ namespace utilities
 
         snapshot_t getSnapshot(); 
         void operator=(frc::XboxController &XboxController);
-        void operator=(snapshot_t &snapshot);
+        void operator=(const snapshot_t &snapshot);
 
         void setJoystickLeft(joystick_t &axis) {m_joystickLeft = axis;}
         joystick_t getJoystickLeft(){return m_joystickLeft;}
