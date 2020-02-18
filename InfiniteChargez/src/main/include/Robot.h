@@ -6,7 +6,7 @@
 /*----------------------------------------------------------------------------*/
 #ifndef YEET_LE_MOST_AMAZING_ROBOT_IN_THE_WORLD
 #define YEET_LE_MOST_AMAZING_ROBOT_IN_THE_WORLD
- #pragma once
+#pragma once
 
 #include "HandlesChecksAndExecs.h"
 #include "InputRecordAndPlay.h"
@@ -51,7 +51,7 @@ private:
   using controller_t = frc::XboxController;
   //Automation Type Aliases
   using accelerometer_t = frc::BuiltInAccelerometer;
-  
+
   //Chrono Alisases
   using clock_t = std::chrono::steady_clock;
   using timePoint_t = std::chrono::steady_clock::time_point;
@@ -59,36 +59,36 @@ private:
 
   using driver_t = frc::DifferentialDrive;
   using handler_t = utilities::XboxInputHandler;
-  private:
-   static constexpr double intakeSpeed{1};
-   static constexpr double speedMultiplier{0.75};
-   static constexpr double rotationMultiplier{1};
-    
-    /*The input is raised to a power to enable more
+
+private:
+  static constexpr double intakeSpeed{1};
+  static constexpr double speedMultiplier{0.75};
+  static constexpr double rotationMultiplier{1};
+
+  /*The input is raised to a power to enable more
     time on the lower curves
     */
 
-    //Must be odd for the moment or else the robo cannot move backwards.
-   static constexpr double speedCurvePower{3};
-   static constexpr double rotationCurvePower{1};
+  //Must be odd for the moment or else the robo cannot move backwards.
+  static constexpr double speedCurvePower{3};
+  static constexpr double rotationCurvePower{1};
 
-   //Automation Con
+  //Automation Con
   //Ports for Motors and Controllers
- private:
-     static constexpr int controllerPort{0};
-     static constexpr int leJoystickLeftPort{0};
+private:
+  static constexpr int controllerPort{0};
+  static constexpr int leJoystickLeftPort{0};
 
-     static constexpr int portDriveFrontLeft{1};
-     static constexpr int portDriveFrontRight{3};
-     static constexpr int portDriveBackLeft{2};
-     static constexpr int portDriveBackRight{4};
-     static constexpr int portIntakeLeft{5};
-     static constexpr int portIntakeRight{6};
-     static constexpr int portStorage{7};
-     static constexpr int portHook{8};
+  static constexpr int portDriveFrontLeft{1};
+  static constexpr int portDriveFrontRight{3};
+  static constexpr int portDriveBackLeft{2};
+  static constexpr int portDriveBackRight{4};
+  static constexpr int portIntakeLeft{5};
+  static constexpr int portIntakeRight{6};
+  static constexpr int portStorage{7};
+  static constexpr int portHook{8};
 
-
- public:
+public:
   Robot();
   void checkAndExec();
   void OdometryTests();
@@ -99,60 +99,62 @@ private:
   void TeleopInit() override;
   void TeleopPeriodic() override;
 
-  handler_t& getInputHandler() {return leInputHandler;}
-  private:
+  handler_t &getInputHandler() { return leInputHandler; }
+
+private:
   bool isRecording{false}; //Really hacky, will remain until the deeper WPLIB api documentation can be discovered *Indiana Jones Music*
   bool recordingEnabled{true};
   std::ofstream recordingBuffer;
   long double meanDelta{0};
-  public:
+
+public:
   void TestPeriodic() override;
- private:
-      //RobotDataPoints
-     frc::Pose2d leRobotPosition{};
 
-     controller_t leController{controllerPort}; //Of epic dankness
-     joystick_t leJoystickLeft{leJoystickLeftPort};
-     handler_t leInputHandler{};
+private:
+  //RobotDataPoints
+  frc::Pose2d leRobotPosition{};
+
+  controller_t leController{controllerPort}; //Of epic dankness
+  joystick_t leJoystickLeft{leJoystickLeftPort};
+  handler_t leInputHandler{};
   //Declare Motors
-     driveMotor_t driveMotorFrontLeft{portDriveFrontLeft};
-     driveMotor_t driveMotorFrontRight{portDriveFrontRight};
-     driveMotor_t driveMotorBackLeft{portDriveBackLeft};
-     driveMotor_t driveMotorBackRight{portDriveBackRight};
+  driveMotor_t driveMotorFrontLeft{portDriveFrontLeft};
+  driveMotor_t driveMotorFrontRight{portDriveFrontRight};
+  driveMotor_t driveMotorBackLeft{portDriveBackLeft};
+  driveMotor_t driveMotorBackRight{portDriveBackRight};
 
-     intakeMotor_t intakeMotorLeft{portIntakeLeft};
-     intakeMotor_t intakeMotorRight{portIntakeRight};
+  intakeMotor_t intakeMotorLeft{portIntakeLeft};
+  intakeMotor_t intakeMotorRight{portIntakeRight};
 
-     storageMotor_t storageMotor{portStorage};
+  storageMotor_t storageMotor{portStorage};
 
-     hookMotor_t hookMotor{portHook};
-     //Non-motor components
-     gyroscope_t leGyroscope{};
-     accelerometer_t leAccelerometer{};
+  hookMotor_t hookMotor{portHook};
+  //Non-motor components
+  gyroscope_t leGyroscope{};
+  accelerometer_t leAccelerometer{};
 
   //Declare Motor Groups
-    frc::SpeedControllerGroup driveMotorsLeft{driveMotorFrontLeft, driveMotorBackLeft};
-    frc::SpeedControllerGroup driveMotorsRight{driveMotorFrontRight, driveMotorBackRight};
+  frc::SpeedControllerGroup driveMotorsLeft{driveMotorFrontLeft, driveMotorBackLeft};
+  frc::SpeedControllerGroup driveMotorsRight{driveMotorFrontRight, driveMotorBackRight};
 
   //Recording Utilities
   utilities::InputRecordAndPlay m_leRecordScribe{};
-    //Recording Utilities
-    void recordActionsExec(utilities::XboxInputHandler &leInputHandler);
-    
+  //Recording Utilities
+  void recordActionsExec(utilities::XboxInputHandler &leInputHandler);
 
-    //Input checking funcitons
-    void recordActionsExec(utilities::XboxInputHandler &leInputHandler, duration_t delta, std::ofstream &recordBuffer);
-    void joystickPosition(utilities::XboxInputHandler::joystick_t &&joystickLeft, utilities::XboxInputHandler::joystick_t &&joystickRight);
-    void buttonA();
-    void buttonB();
-    void buttonX();
-    void buttonY();
-    void bumper();  
-    //Movement Functions
-    void intakeIn();
-    void intakeOut();
-    void intakeStop();
-    void updatePos(duration_t delta);
+  //Input checking funcitons
+  void recordActionsExec(utilities::XboxInputHandler &leInputHandler, duration_t delta, std::ofstream &recordBuffer);
+  void joystickPosition(utilities::XboxInputHandler::joystick_t &&joystickLeft, utilities::XboxInputHandler::joystick_t &&joystickRight);
+  void buttonA();
+  void buttonB();
+  void buttonX();
+  void buttonY();
+  void bumper();
+  //Movement Functions
+  void intakeIn();
+  void intakeOut();
+  void intakeStop();
+  void updatePos(duration_t delta);
   //Control handling nested class
   //Declare Controllers
   //Declare Time Variables
