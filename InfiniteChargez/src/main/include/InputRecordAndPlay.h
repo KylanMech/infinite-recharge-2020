@@ -20,11 +20,12 @@ namespace utilities
         void playLoadedRecordingToAndExec(HandlesChecksAndExecs &probablyARobot);
         void pauseLoadedRecording();
         void stopLoadedRecording();
-
         void recordFromAndTo(HandlesChecksAndExecs &probablyARobot, std::ofstream &outputFile);
+        void stopRecording();
     private:
     InputRecorder m_recorder{};
     InputPlayer m_player{};
+    std::ifstream *m_recording{};
     };
 }
 #endif
