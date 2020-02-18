@@ -5,21 +5,6 @@
 #include <chrono>
 #include <string>
 #include <fstream>
-void executeRecording(Robot *robot)
-{
-    std::ifstream recordingFile{robot->inputRecordFileName};
-    std::string line{""};
-    std::getline(recordingFile, line);
-    const Robot::duration_t frameDelta{std::stod(line)};
-
-    while (std::getline(recordingFile, line))
-    {
-        std::cout << line << '\n';
-        robot->leInputHandler = line;
-        robot->checkAndExec(robot->leInputHandler);
-        std::this_thread::sleep_for(frameDelta);
-    }
-}
 
 void Robot::recordActionsExec(utilities::XboxInputHandler &leInputHandler, duration_t delta, std::ofstream &recordBuffer)
 {

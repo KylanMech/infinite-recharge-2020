@@ -164,5 +164,4 @@ private:
   std::string m_autoSelected;
 };
 
-void executeRecording(Robot *robot);
 #endif
