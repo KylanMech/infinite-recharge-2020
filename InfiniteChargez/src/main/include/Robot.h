@@ -9,6 +9,7 @@
  #pragma once
 
 #include "HandlesChecksAndExecs.h"
+#include "InputRecordAndPlay.h"
 #include "ControlCheckExec.h"
 #include "XboxInputHandler.h"
 #include "Pair2D.h"
@@ -132,9 +133,11 @@ private:
     frc::SpeedControllerGroup driveMotorsLeft{driveMotorFrontLeft, driveMotorBackLeft};
     frc::SpeedControllerGroup driveMotorsRight{driveMotorFrontRight, driveMotorBackRight};
 
+  //Recording Utilities
+  utilities::InputRecordAndPlay m_leRecordScribe{};
     //Recording Utilities
-    friend void executeRecording(Robot *robot);
     void recordActionsExec(utilities::XboxInputHandler &leInputHandler);
+    
 
     //Input checking funcitons
     void recordActionsExec(utilities::XboxInputHandler &leInputHandler, duration_t delta, std::ofstream &recordBuffer);
