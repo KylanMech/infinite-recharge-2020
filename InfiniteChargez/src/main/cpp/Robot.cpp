@@ -68,8 +68,10 @@ void Robot::RobotPeriodic()
  */
 void Robot::AutonomousInit() 
 {
-  std::thread recording(executeRecording, this);
-  recording.detach();
+  m_recordReadFile.open(inputRecordFileName);
+
+  m_leRecordScribe.loadRecording(m_recordReadFile);
+  m_leRecordScribe.playLoadedRecordingToAndExec(*this);
 
   m_autoSelected = m_chooser.GetSelected();
   // m_autoSelected = SmartDashboard::GetString("Auto Selector",
