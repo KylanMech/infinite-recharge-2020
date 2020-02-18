@@ -5,6 +5,7 @@
 #include "HandlesChecksAndExecs.h"
 #include "XboxInputHandler.h"
 
+#include <chrono>
 #include <fstream>
 #include <string>
 namespace utilities
@@ -23,7 +24,9 @@ namespace utilities
         //void stopLoadedRecording();
         void recordFromAndTo(HandlesChecksAndExecs &probablyARobot, std::ofstream &outputFile);
         void snapFromAndWrite(HandlesChecksAndExecs &probablyARobot);
-        void stopRecording();
+        //void stopRecording();
+        void stopRecording(std::chrono::duration<double> &delta);
+
     private:
     InputRecorder m_recorder{};
     InputPlayer m_player{};

@@ -1,4 +1,5 @@
 #include "InputRecordAndPlay.h"
+#include "chrono"
 namespace utilities
 {
 
@@ -13,9 +14,9 @@ void InputRecordAndPlay::playLoadedRecordingToAndExec(HandlesChecksAndExecs &pro
     m_player.playToAndExec(probablyARobot);
 
 }
-void InputRecordAndPlay::stopRecording()
+void InputRecordAndPlay::stopRecording(std::chrono::duration<double> &delta)
 {
-    m_recorder.stopRecording();
+    m_recorder.stopRecording(delta);
 }
 
 void InputRecordAndPlay::recordFromAndTo(HandlesChecksAndExecs &probablyARobot, std::ofstream &outputFile)
