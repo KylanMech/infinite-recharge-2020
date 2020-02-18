@@ -112,7 +112,7 @@ void Robot::TeleopPeriodic()
   //std::string snap = leInputHandler.getSnapshot();
   //leInputHandler = snap;
   std::cout << leInputHandler.getSnapshot() << '\n';
-  checkAndExec(leInputHandler);
+  checkAndExec();
   recordActionsExec(leInputHandler, delta, recordingBuffer);
   
 }
