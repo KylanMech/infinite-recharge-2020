@@ -15,17 +15,20 @@ namespace utilities
         InputRecordAndPlay() {}
 
         void loadRecording(std::ifstream &recordingFile);
+        void designateFile(std::ofstream &recordingFile);
 
         //void playLoadedRecordingTo(utilities::XboxInputHandler);
         void playLoadedRecordingToAndExec(HandlesChecksAndExecs &probablyARobot);
         //void pauseLoadedRecording();
         //void stopLoadedRecording();
         void recordFromAndTo(HandlesChecksAndExecs &probablyARobot, std::ofstream &outputFile);
+        void snapFromAndWrite(HandlesChecksAndExecs &probablyARobot);
         void stopRecording();
     private:
     InputRecorder m_recorder{};
     InputPlayer m_player{};
     std::ifstream *m_recording{};
+    std::ofstream *m_recordedFile{};
     };
 }
 #endif
