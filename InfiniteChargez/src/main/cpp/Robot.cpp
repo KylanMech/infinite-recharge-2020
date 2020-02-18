@@ -97,7 +97,7 @@ void Robot::AutonomousPeriodic()
 
 void Robot::TeleopInit()
 {
-  recordingBuffer.open(recordBufferName);
+  m_recordFile.open(recordBufferName);
 }
 
 void Robot::TeleopPeriodic()

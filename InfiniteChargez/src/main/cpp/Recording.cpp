@@ -31,27 +31,18 @@ void Robot::recordActionsExec(utilities::XboxInputHandler &leInputHandler, durat
     }
     if (leInputHandler.getButtonBackState() && isRecording) //Do not use elseif!!! If is for better response!!!
     {
-        recordBuffer.close();
-        std::ifstream recordBufferRead{recordBufferName};
         isRecording = false;
-        std::string line;
-        std::ofstream recordFile{inputRecordFileName};
-
-        recordFile << std::to_string(meanDelta) << '\n';
-
-        while (std::getline(recordBufferRead, line))
-        {
-            recordFile << line << '\n';
-        }
-        recordFile.close();
-        recordBufferRead.close();
+        duration_t meanDeltaFinal{meanDelta};
+        m_leRecordScribe.stopRecording(meanDeltaFinal);
+        
+        m_recordFile.close();
     }
 
     if (isRecording)
     {
         std::cout << "recording" << '\n';
         meanDelta = (meanDelta + delta.count()) / 2;
-        recordBuffer << leInputHandler.getSnapshot() << '\n';
+        m_leRecordScribe.snapFromAndWrite(*this);
     }
     if (leInputHandler.getButtonXPressed())
     {
