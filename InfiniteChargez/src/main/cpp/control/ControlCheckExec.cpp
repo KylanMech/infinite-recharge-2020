@@ -5,7 +5,7 @@
 #include <iostream>
 #include <math.h>
 
-    void Robot::checkAndExec(handler_t &leInputhandler)
+    void Robot::checkAndExec()
     {
         joystickPosition(leInputHandler.getJoystickLeft(), leInputHandler.getJoystickRight());
         //buttonA();
