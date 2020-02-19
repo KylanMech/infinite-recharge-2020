@@ -20,10 +20,6 @@ namespace utilities
         m_recordingBuffer << probablyARobot.getInputHandler().getSnapshot() << '\n';
     }
 
-    void InputRecorder::stopRecording()
-    {
-    }
-
     void InputRecorder::stopRecording(std::chrono::duration<double> delta)
     {
         std::string line{""};
