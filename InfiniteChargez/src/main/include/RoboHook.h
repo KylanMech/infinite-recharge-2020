@@ -6,7 +6,7 @@
 class RoboHook
 {
 
-  using driveMotor_t = ctre::phoenix::motorcontrol::can::WPI_VictorSPX;
+  using hookMotor_t = ctre::phoenix::motorcontrol::can::WPI_VictorSPX;
 public:
     RoboHook() {}
 
@@ -19,6 +19,5 @@ private:
   static constexpr int portHook{8};
 
   hookMotor_t hookMotor{portHook};
-}
-
+};
 #endif
