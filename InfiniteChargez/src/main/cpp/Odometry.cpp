@@ -1,11 +1,13 @@
-#include "Robot.h"
+#include "RoboData.h"
 #include "Pair2D.h"
 #include "Utilities.h"
-#include <chrono>
+
 #include <units/units.h>
+
+#include <chrono>
 #include <cmath>
 
-void Robot::updatePos(duration_t delta)
+void RoboData::updatePos(duration_t delta)
 {
     //std::cout << leGyroscope.GetGyroAngleZ();
     units::degree_t leAngle{leGyroscope.GetGyroAngleZ()};
