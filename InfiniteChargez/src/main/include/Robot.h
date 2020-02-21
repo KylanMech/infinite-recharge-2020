@@ -54,7 +54,7 @@ private:
 
   //Chrono Alisases
   using clock_t = std::chrono::steady_clock;
-  using timePoint_t = std::chrono::steady_clock::time_point;
+  using timePoint_t = std::chrono::time_point<clock_t>;
   using duration_t = std::chrono::duration<double>;
 
   using driver_t = frc::DifferentialDrive;
