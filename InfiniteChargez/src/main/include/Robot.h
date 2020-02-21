@@ -106,7 +106,7 @@ private:
   //Recording Utilities
   utilities::InputRecordAndPlay m_leRecordScribe{};
   //Recording Utilities
-  void recordActionsExec(utilities::XboxInputHandler &leInputHandler);
+  void recordActionsExec(utilities::XboxInputHandler &leInputHandler, duration_t delta);
 
   //Input checking funcitons
   void recordActionsExec(utilities::XboxInputHandler &leInputHandler, duration_t delta, std::ofstream &recordBuffer);
