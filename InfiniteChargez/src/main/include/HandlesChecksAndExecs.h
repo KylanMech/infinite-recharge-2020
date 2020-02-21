@@ -11,6 +11,7 @@ namespace utilities
      */
     virtual void checkAndExec() = 0;
     virtual InputHandler& getInputHandler() = 0;
+    virtual ~HandlesChecksAndExecs() {}
     };
 }
 #endif
