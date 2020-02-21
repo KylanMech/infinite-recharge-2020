@@ -6,6 +6,10 @@ class RoboCheckExec
 {
 public:
     RoboCheckExec(Robot *robo):
+        m_robo{robo} 
+        {}
+    
+    void CheckExec();
 
 private:
     Robot *m_robo;
