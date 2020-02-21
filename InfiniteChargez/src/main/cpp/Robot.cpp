@@ -103,6 +103,7 @@ void Robot::TeleopInit()
 void Robot::TeleopPeriodic()
 {
   std::cout << leController.GetStartButton() << '\n';
+  //REORDER DELTA CALCS
   duration_t delta{std::chrono::duration_cast<duration_t>(clock_t::now() - lastSnapshot)};
   Robot::updatePos(delta);
   lastSnapshot = clock_t::now();
