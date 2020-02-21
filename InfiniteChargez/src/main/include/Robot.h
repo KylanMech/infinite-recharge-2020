@@ -8,6 +8,7 @@
 #define YEET_LE_MOST_AMAZING_ROBOT_IN_THE_WORLD
 #pragma once
 
+#include "RoboCheckExec.h"
 #include "RoboDrive.h"
 #include "RoboHook.h"
 #include "RoboStorage.h"
@@ -106,7 +107,6 @@ private:
   //Recording Utilities
   utilities::InputRecordAndPlay m_leRecordScribe{};
   //Recording Utilities
-  void recordActionsExec(utilities::XboxInputHandler &leInputHandler, duration_t delta);
 
   //Input checking funcitons
   void recordActionsExec(utilities::XboxInputHandler &leInputHandler, duration_t delta, std::ofstream &recordBuffer);
@@ -126,6 +126,7 @@ private:
   const std::string kAutoNameDefault = "Yeeter McYeeterson";
   const std::string kAutoNameCustom = "Yeeter McYeeterson";
   std::string m_autoSelected;
+  friend RoboCheckExec;
 };
 
 #endif
