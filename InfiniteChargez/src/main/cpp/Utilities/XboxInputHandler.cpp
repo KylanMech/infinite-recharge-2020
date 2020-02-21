@@ -1,8 +1,9 @@
 #include "XboxInputHandler.h"
 #include "Utilities.h"
 
-#include <string>
 #include <frc/XboxController.h>
+
+#include <string>
 namespace utilities
 {
     void XboxInputHandler::operator=(frc::XboxController &XBoxController)

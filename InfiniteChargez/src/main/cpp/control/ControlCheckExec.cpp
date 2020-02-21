@@ -1,6 +1,7 @@
 #include "Robot.h"
-#include "Utilities.h"
 #include "Pair2D.h"
+#include "Utilities.h"
+
 #include <algorithm>
 #include <iostream>
 #include <math.h>

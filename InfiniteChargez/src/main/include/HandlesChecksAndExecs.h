@@ -1,6 +1,7 @@
 #ifndef YEET_CHECKS_AND_EXECS
 #define YEET_CHECKS_AND_EXECS
 #include "InputHandler.h"
+
 namespace utilities
 {
     class HandlesChecksAndExecs

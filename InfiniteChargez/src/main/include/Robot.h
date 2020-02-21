@@ -10,8 +10,8 @@
 
 #include "HandlesChecksAndExecs.h"
 #include "InputRecordAndPlay.h"
-#include "XboxInputHandler.h"
 #include "Pair2D.h"
+#include "XboxInputHandler.h"
 
 #include <adi/ADIS16448_IMU.h>
 
