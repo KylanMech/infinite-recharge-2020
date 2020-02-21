@@ -17,9 +17,7 @@
 #include "Pair2D.h"
 #include "XboxInputHandler.h"
 
-#include <frc/drive/DifferentialDrive.h>
 #include <frc/Joystick.h>
-#include <frc/kinematics/DifferentialDriveOdometry.h>
 #include <frc/smartdashboard/SendableChooser.h>
 #include <frc/SpeedControllerGroup.h>
 #include <frc/TimedRobot.h>
@@ -35,11 +33,9 @@ private:
   const std::string recordBufferName{"/home/lvuser/InputRecordBuffer.rcd"};
   std::ofstream m_recordFile{};
   std::ifstream m_recordReadFile{};
-  bool tankMode{false};
 
   using joystick_t = frc::Joystick;
 
-  //Chrono Alisases
   using clock_t = std::chrono::steady_clock;
   using timePoint_t = std::chrono::time_point<clock_t>;
   using duration_t = std::chrono::duration<double>;
