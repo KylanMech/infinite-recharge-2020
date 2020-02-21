@@ -20,7 +20,7 @@ namespace utilities
 
         std::getline(*m_recordingFile, delta);
 
-        m_recordingThread = std::thread{InputPlayer::playRecordingExec, this, probablyARobot, deltaTime};
+        m_recordingThread = std::thread{&InputPlayer::playRecordingExec, this, probablyARobot, deltaTime};
         m_recordingThread.detach();
 
     }
