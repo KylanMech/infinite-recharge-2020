@@ -8,6 +8,7 @@
 #define YEET_LE_MOST_AMAZING_ROBOT_IN_THE_WORLD
 #pragma once
 
+#include "RoboDrive.h"
 #include "HandlesChecksAndExecs.h"
 #include "InputRecordAndPlay.h"
 #include "Pair2D.h"
@@ -40,8 +41,9 @@ private:
   std::ifstream m_recordReadFile{};
   bool tankMode{false};
   //Configuration constants will go here until a configuration system can be set up
-  using joystick_t = frc::Joystick;
+
   using driveMotor_t = ctre::phoenix::motorcontrol::can::WPI_VictorSPX;
+  using joystick_t = frc::Joystick;
   using intakeMotor_t = driveMotor_t;
   using storageMotor_t = driveMotor_t;
   using hookMotor_t = driveMotor_t;
@@ -79,10 +81,6 @@ private:
   static constexpr int controllerPort{0};
   static constexpr int leJoystickLeftPort{0};
 
-  static constexpr int portDriveFrontLeft{1};
-  static constexpr int portDriveFrontRight{3};
-  static constexpr int portDriveBackLeft{2};
-  static constexpr int portDriveBackRight{4};
   static constexpr int portIntakeLeft{5};
   static constexpr int portIntakeRight{6};
   static constexpr int portStorage{7};
@@ -112,17 +110,14 @@ public:
 
 private:
   //RobotDataPoints
+
   frc::Pose2d leRobotPosition{};
 
   controller_t leController{controllerPort}; //Of epic dankness
   joystick_t leJoystickLeft{leJoystickLeftPort};
   handler_t leInputHandler{};
   //Declare Motors
-  driveMotor_t driveMotorFrontLeft{portDriveFrontLeft};
-  driveMotor_t driveMotorFrontRight{portDriveFrontRight};
-  driveMotor_t driveMotorBackLeft{portDriveBackLeft};
-  driveMotor_t driveMotorBackRight{portDriveBackRight};
-
+  RoboDrive leRoboDrive{};
   intakeMotor_t intakeMotorLeft{portIntakeLeft};
   intakeMotor_t intakeMotorRight{portIntakeRight};
 
@@ -134,8 +129,6 @@ private:
   accelerometer_t leAccelerometer{};
 
   //Declare Motor Groups
-  frc::SpeedControllerGroup driveMotorsLeft{driveMotorFrontLeft, driveMotorBackLeft};
-  frc::SpeedControllerGroup driveMotorsRight{driveMotorFrontRight, driveMotorBackRight};
 
   //Recording Utilities
   utilities::InputRecordAndPlay m_leRecordScribe{};
@@ -150,9 +143,6 @@ private:
   void buttonX();
   void buttonY();
   void bumper();
-  //Movement Functions
-  void intakeIn();
-  void intakeOut();
   void intakeStop();
   void updatePos(duration_t delta);
   //Control handling nested class

@@ -5,21 +5,28 @@
 #include <ctre/phoenix/motorcontrol/can/WPI_VictorSPX.h>
 
 #include <frc/SpeedControllerGroup.h>
+
+#include <algorithm>
 class RoboDrive
 {
     using driveMotor_t = ctre::phoenix::motorcontrol::can::WPI_VictorSPX;
 
 public:
-    RoboDrive() :
+    RoboDrive()
     {
     }
 
-    void setMovementMap(utilities::Pair2D<double> &movementMap);
+    void setMovementMap(utilities::Pair2D<double> &&movementMap)
+    {
+
+        m_rightMotors.Set(std::clamp(movementMap.y - movementMap.x, -1.0, 1.0));
+        m_leftMotors.Set(std::clamp(movementMap.y + movementMap.x, -1.0, 1.0));//FIGURE OUT WHY A NEGATIVE IS NEEDED!!!!
+    };
     //void setForwardMovement(double forwards);
     //void setRotationMovement(double clockwise);
 private:
-    frc::SpeedControllerGroup driveMotorsLeft{driveMotorFrontLeft, driveMotorBackLeft};
-    frc::SpeedControllerGroup driveMotorsRight{driveMotorFrontRight, driveMotorBackRight};
+    frc::SpeedControllerGroup m_leftMotors{driveMotorFrontLeft, driveMotorBackLeft};
+    frc::SpeedControllerGroup m_rightMotors{driveMotorFrontRight, driveMotorBackRight};
 
     static constexpr int portDriveFrontLeft{1};
     static constexpr int portDriveFrontRight{3};
