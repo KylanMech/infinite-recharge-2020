@@ -44,7 +44,6 @@ private:
 
   using driveMotor_t = ctre::phoenix::motorcontrol::can::WPI_VictorSPX;
   using joystick_t = frc::Joystick;
-  using intakeMotor_t = driveMotor_t;
   using storageMotor_t = driveMotor_t;
   using hookMotor_t = driveMotor_t;
 
@@ -81,9 +80,6 @@ private:
   static constexpr int controllerPort{0};
   static constexpr int leJoystickLeftPort{0};
 
-  static constexpr int portIntakeLeft{5};
-  static constexpr int portIntakeRight{6};
-  static constexpr int portStorage{7};
   static constexpr int portHook{8};
 
 public:
@@ -118,10 +114,7 @@ private:
   handler_t leInputHandler{};
   //Declare Motors
   RoboDrive leRoboDrive{};
-  intakeMotor_t intakeMotorLeft{portIntakeLeft};
-  intakeMotor_t intakeMotorRight{portIntakeRight};
 
-  storageMotor_t storageMotor{portStorage};
 
   hookMotor_t hookMotor{portHook};
   //Non-motor components
