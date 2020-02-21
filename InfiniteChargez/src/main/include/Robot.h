@@ -19,8 +19,6 @@
 
 #include <adi/ADIS16448_IMU.h>
 
-#include <ctre/phoenix/motorcontrol/can/WPI_VictorSPX.h>
-
 #include <frc/BuiltInAccelerometer.h>
 #include <frc/drive/DifferentialDrive.h>
 #include <frc/geometry/Pose2d.h>
@@ -81,10 +79,6 @@ public:
 
   handler_t &getInputHandler() { return leInputHandler; }
 
-private:
-  bool isRecording{false}; //Really hacky, will remain until the deeper WPLIB api documentation can be discovered *Indiana Jones Music*
-  bool recordingEnabled{true};
-  long double meanDelta{0};
 
 public:
   void TestPeriodic() override;
@@ -109,14 +103,6 @@ private:
   //Recording Utilities
 
   //Input checking funcitons
-  void recordActionsExec(utilities::XboxInputHandler &leInputHandler, duration_t delta, std::ofstream &recordBuffer);
-  void joystickPosition(utilities::XboxInputHandler::joystick_t &&joystickLeft, utilities::XboxInputHandler::joystick_t &&joystickRight);
-  void buttonA();
-  void buttonB();
-  void buttonX();
-  void buttonY();
-  void bumper();
-  void intakeStop();
   void updatePos(duration_t delta);
   //Control handling nested class
   //Declare Controllers
@@ -126,7 +112,7 @@ private:
   const std::string kAutoNameDefault = "Yeeter McYeeterson";
   const std::string kAutoNameCustom = "Yeeter McYeeterson";
   std::string m_autoSelected;
-  friend RoboCheckExec;
+  friend class RoboCheckExec;
 };
 
 #endif
