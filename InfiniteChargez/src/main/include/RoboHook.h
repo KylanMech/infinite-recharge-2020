@@ -1,5 +1,7 @@
 #ifndef YEET_ROBOT_HOOK_H
 #define YEET_ROBOT_HOOK_H
+#include <ctre/phoenix/motorcontrol/can/WPI_VictorSPX.h>
+
 
 class RoboHook
 {
