@@ -27,7 +27,7 @@ void Robot::OdometryTests()
   //std::cout << leDifferentialOdometer.GetPose().Translation().X() << '\n';
 }
 
-Robot::Robot() : frc::TimedRobot{5_ms}, 
+Robot::Robot() : frc::TimedRobot{5_ms} 
                  
 {
   m_leCheckExec = new RoboCheckExec{this};

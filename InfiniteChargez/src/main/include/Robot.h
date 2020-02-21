@@ -40,6 +40,7 @@ private:
   using joystick_t = frc::Joystick;
 
   //Chrono Alisases
+  using clock_t = std::chrono::steady_clock;
   using timePoint_t = std::chrono::time_point<clock_t>;
   using duration_t = std::chrono::duration<double>;
 
