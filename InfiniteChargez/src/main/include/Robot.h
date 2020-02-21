@@ -63,18 +63,9 @@ private:
 private:
   static constexpr double rotationMultiplier{1};
 
-  /*The input is raised to a power to enable more
-    time on the lower curves
-    */
-
-  //Must be odd for the moment or else the robo cannot move backwards.
-
-  //Automation Con
-  //Ports for Motors and Controllers
 private:
   static constexpr int controllerPort{0};
   static constexpr int leJoystickLeftPort{0};
-
 
 public:
   Robot();
