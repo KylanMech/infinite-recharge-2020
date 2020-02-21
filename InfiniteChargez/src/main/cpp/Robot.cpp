@@ -100,18 +100,16 @@ void Robot::AutonomousPeriodic()
 void Robot::TeleopInit()
 {
   m_recordFile.open(recordBufferName);
-  lastSnapshot = clock_t::now();
+  leRoboData.initSnap();
 }
 
 void Robot::TeleopPeriodic()
 {
+  duration_t delta = leRoboData.calcAndGetTimeDelta();
   std::cout << leController.GetStartButton() << '\n';
   //REORDER DELTA CALCS
-  Robot::timePoint_t now{clock_t::now()};
-  duration_t delta{std::chrono::duration_cast<duration_t>(now - lastSnapshot)};
-  lastSnapshot = now;
 
-  Robot::updatePos(delta);
+  leRoboData.updatePos(delta);
   OdometryTests();
   m_leCheckExec->check(delta);
 

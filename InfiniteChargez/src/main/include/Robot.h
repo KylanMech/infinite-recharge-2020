@@ -9,6 +9,7 @@
 #pragma once
 
 #include "RoboDrive.h"
+#include "RoboData.h"
 #include "RoboHook.h"
 #include "RoboStorage.h"
 #include "HandlesChecksAndExecs.h"
@@ -39,7 +40,6 @@ private:
   using joystick_t = frc::Joystick;
 
   //Chrono Alisases
-  using clock_t = std::chrono::steady_clock;
   using timePoint_t = std::chrono::time_point<clock_t>;
   using duration_t = std::chrono::duration<double>;
 
@@ -67,13 +67,11 @@ public:
 
   handler_t &getInputHandler() { return leInputHandler; }
 
-
 public:
   void TestPeriodic() override;
 
 private:
   RoboCheckExec* m_leCheckExec;
-
 
   controller_t leController{controllerPort}; //Of epic dankness
   joystick_t leJoystickLeft{leJoystickLeftPort};
@@ -84,8 +82,8 @@ private:
   RoboStorage leStorage{};
 
   utilities::InputRecordAndPlay m_leRecordScribe{};
+  RoboData leRoboData;
 
-  timePoint_t lastSnapshot;
   frc::SendableChooser<std::string> m_chooser;
   const std::string kAutoNameDefault = "Yeeter McYeeterson";
   const std::string kAutoNameCustom = "Yeeter McYeeterson";
