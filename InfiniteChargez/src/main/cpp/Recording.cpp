@@ -1,4 +1,4 @@
-#include "Robot.h"
+#include "RoboCheckExec.h"
 #include "XboxInputHandler.h"
 
 #include <thread>
@@ -6,7 +6,7 @@
 #include <string>
 #include <fstream>
 
-void Robot::recordActionsExec(utilities::XboxInputHandler &leInputHandler, duration_t delta)
+void RoboCheckExec::recordActionsExec(utilities::XboxInputHandler &leInputHandler, duration_t delta)
 {
     if (leInputHandler.getButtonStartState() && recordingEnabled)
     {
@@ -18,16 +18,16 @@ void Robot::recordActionsExec(utilities::XboxInputHandler &leInputHandler, durat
     {
         isRecording = false;
         duration_t meanDeltaFinal{meanDelta};
-        m_leRecordScribe.stopRecording(meanDeltaFinal);
+        m_robo->m_leRecordScribe.stopRecording(meanDeltaFinal);
         
-        m_recordFile.close();
+        robo->m_recordFile.close();
     }
 
     if (isRecording)
     {
         std::cout << "recording" << '\n';
         meanDelta = (meanDelta + delta.count()) / 2;
-        m_leRecordScribe.snapFromAndWrite(*this);
+        m_robo->m_leRecordScribe.snapFromAndWrite(*this);
     }
     if (leInputHandler.getButtonXPressed())
     {
