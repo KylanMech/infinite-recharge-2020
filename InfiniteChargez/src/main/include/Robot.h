@@ -9,6 +9,8 @@
 #pragma once
 
 #include "RoboDrive.h"
+#include "RoboHook.h"
+#include "RoboStorage.h"
 #include "HandlesChecksAndExecs.h"
 #include "InputRecordAndPlay.h"
 #include "Pair2D.h"
@@ -42,10 +44,7 @@ private:
   bool tankMode{false};
   //Configuration constants will go here until a configuration system can be set up
 
-  using driveMotor_t = ctre::phoenix::motorcontrol::can::WPI_VictorSPX;
   using joystick_t = frc::Joystick;
-  using storageMotor_t = driveMotor_t;
-  using hookMotor_t = driveMotor_t;
 
   using gyroscope_t = frc::ADIS16448_IMU;
 
@@ -62,8 +61,6 @@ private:
   using handler_t = utilities::XboxInputHandler;
 
 private:
-  static constexpr double intakeSpeed{1};
-  static constexpr double speedMultiplier{0.75};
   static constexpr double rotationMultiplier{1};
 
   /*The input is raised to a power to enable more
@@ -71,8 +68,6 @@ private:
     */
 
   //Must be odd for the moment or else the robo cannot move backwards.
-  static constexpr double speedCurvePower{3};
-  static constexpr double rotationCurvePower{1};
 
   //Automation Con
   //Ports for Motors and Controllers
@@ -80,7 +75,6 @@ private:
   static constexpr int controllerPort{0};
   static constexpr int leJoystickLeftPort{0};
 
-  static constexpr int portHook{8};
 
 public:
   Robot();
@@ -98,7 +92,6 @@ public:
 private:
   bool isRecording{false}; //Really hacky, will remain until the deeper WPLIB api documentation can be discovered *Indiana Jones Music*
   bool recordingEnabled{true};
-  std::ofstream recordingBuffer;
   long double meanDelta{0};
 
 public:
@@ -114,15 +107,11 @@ private:
   handler_t leInputHandler{};
   //Declare Motors
   RoboDrive leRoboDrive{};
-
-
-  hookMotor_t hookMotor{portHook};
+  RoboHook leHook{};
+  RoboStorage leStorage{};
   //Non-motor components
   gyroscope_t leGyroscope{};
   accelerometer_t leAccelerometer{};
-
-  //Declare Motor Groups
-
   //Recording Utilities
   utilities::InputRecordAndPlay m_leRecordScribe{};
   //Recording Utilities
