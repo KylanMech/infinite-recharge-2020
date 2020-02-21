@@ -27,8 +27,8 @@ void Robot::OdometryTests()
   //std::cout << leDifferentialOdometer.GetPose().Translation().X() << '\n';
 }
 
-Robot::Robot() : frc::TimedRobot{5_ms}, leAccelerometer{frc::BuiltInAccelerometer::kRange_8G},
-                 lastSnapshot{clock_t::now()}
+Robot::Robot() : frc::TimedRobot{5_ms}, 
+                 
 {
   m_leCheckExec = new RoboCheckExec{this};
 }
@@ -100,6 +100,7 @@ void Robot::AutonomousPeriodic()
 void Robot::TeleopInit()
 {
   m_recordFile.open(recordBufferName);
+  lastSnapshot = clock_t::now();
 }
 
 void Robot::TeleopPeriodic()
