@@ -9,7 +9,8 @@
 #include <chrono>
 class RoboData
 {
-
+    using clock_t = std::chrono::steady_clock;
+    using timepoint_t = std::chrono::time_point<clock_t>;
     using duration_t = std::chrono::duration<double>;
     using accelerometer_t = frc::BuiltInAccelerometer;
     using gyroscope_t = frc::ADIS16448_IMU;
@@ -19,10 +20,22 @@ public:
 
     void updatePos(duration_t delta);
 
+    void initSnap() {lastSnap = clock_t::now();}
+
+    duration_t calcAndGetTimeDelta()
+    {
+        timepoint_t now = clock_t::now();
+        duration_t delta{std::chrono::duration_cast<duration_t>(now - lastSnap)};
+        lastSnap = now;
+        return delta;
+    }
+
+private:
+
     gyroscope_t leGyroscope{};
     accelerometer_t leAccelerometer{};
 
-private:
     frc::Pose2d leRobotPosition;
+    timepoint_t lastSnap;
 };
 #endif
