@@ -20,14 +20,14 @@ void RoboCheckExec::recordActionsExec(utilities::XboxInputHandler &leInputHandle
         duration_t meanDeltaFinal{meanDelta};
         m_robo->m_leRecordScribe.stopRecording(meanDeltaFinal);
         
-        robo->m_recordFile.close();
+        m_robo->m_recordFile.close();
     }
 
     if (isRecording)
     {
         std::cout << "recording" << '\n';
         meanDelta = (meanDelta + delta.count()) / 2;
-        m_robo->m_leRecordScribe.snapFromAndWrite(*this);
+        m_robo->m_leRecordScribe.snapFromAndWrite(m_robo);
     }
     if (leInputHandler.getButtonXPressed())
     {

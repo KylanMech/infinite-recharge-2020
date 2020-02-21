@@ -1,10 +1,13 @@
 #ifndef YEET_ROBOT_CHECK_EXEC_H
 #define YEET_ROBOT_CHECK_EXEC_H
 #include "Robot.h"
+#include "Utilities.h"
+
+#include <chrono>
 
 class RoboCheckExec
 {
-    using duration_t = Robot::duration_t;
+    using duration_t = std::chrono::duration<double>;
 
 public:
     RoboCheckExec(Robot *robo) : m_robo{robo}
@@ -12,9 +15,7 @@ public:
     }
 
     void checkExec();
-    void check();
-
-    void recordActionsExec(utilities::XboxInputHandler &leInputHandler, duration_t delta);
+    void check(duration_t delta);
 
 private:
     void recordActionsExec(utilities::XboxInputHandler &leInputHandler, duration_t delta);

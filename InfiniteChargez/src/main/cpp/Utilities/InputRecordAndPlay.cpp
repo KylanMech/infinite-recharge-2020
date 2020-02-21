@@ -24,7 +24,7 @@ void InputRecordAndPlay::recordFromAndTo(HandlesChecksAndExecs &probablyARobot, 
     m_recorder.designateFile(outputFile);
     m_recorder.recordFrom(probablyARobot);
 }
-void InputRecordAndPlay::snapFromAndWrite(HandlesChecksAndExecs &probablyARobot)
+void InputRecordAndPlay::snapFromAndWrite(HandlesChecksAndExecs *probablyARobot)
 {
     m_recorder.snapFrom(probablyARobot);
 }

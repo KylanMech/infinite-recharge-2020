@@ -8,7 +8,6 @@
 #define YEET_LE_MOST_AMAZING_ROBOT_IN_THE_WORLD
 #pragma once
 
-#include "RoboCheckExec.h"
 #include "RoboDrive.h"
 #include "RoboHook.h"
 #include "RoboStorage.h"
@@ -32,7 +31,7 @@
 
 #include <fstream>
 #include <string>
-
+class RoboCheckExec;
 class Robot : public frc::TimedRobot, public utilities::HandlesChecksAndExecs
 {
 private:
@@ -84,7 +83,7 @@ public:
   void TestPeriodic() override;
 
 private:
-  //RobotDataPoints
+  RoboCheckExec* m_leCheckExec;
 
   frc::Pose2d leRobotPosition{};
 
@@ -112,6 +111,7 @@ private:
   const std::string kAutoNameDefault = "Yeeter McYeeterson";
   const std::string kAutoNameCustom = "Yeeter McYeeterson";
   std::string m_autoSelected;
+
   friend class RoboCheckExec;
 };
 

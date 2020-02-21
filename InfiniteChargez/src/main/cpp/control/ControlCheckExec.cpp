@@ -6,6 +6,13 @@
 #include <iostream>
 #include <math.h>
 
+    void RoboCheckExec::check(duration_t delta)
+    {
+        checkExec();
+        recordActionsExec(m_robo->leInputHandler, delta);
+
+    }
+
     void RoboCheckExec::checkExec()
     {
         joystickPosition(m_robo->leInputHandler.getJoystickLeft(), m_robo->leInputHandler.getJoystickRight());

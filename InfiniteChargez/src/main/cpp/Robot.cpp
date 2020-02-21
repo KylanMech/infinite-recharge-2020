@@ -6,6 +6,7 @@
 /*----------------------------------------------------------------------------*/
 
 #include "Robot.h"
+#include "RoboCheckExec.h"
 #include "FileConstants.h"
 
 #include <frc/BuiltInAccelerometer.h>
@@ -29,6 +30,7 @@ void Robot::OdometryTests()
 Robot::Robot() : frc::TimedRobot{5_ms}, leAccelerometer{frc::BuiltInAccelerometer::kRange_8G},
                  lastSnapshot{clock_t::now()}
 {
+  m_leCheckExec = new RoboCheckExec{this};
 }
 
 void Robot::RobotInit()
@@ -106,22 +108,24 @@ void Robot::TeleopPeriodic()
   //REORDER DELTA CALCS
   Robot::timePoint_t now{clock_t::now()};
   duration_t delta{std::chrono::duration_cast<duration_t>(now - lastSnapshot)};
-  Robot::updatePos(delta);
   lastSnapshot = now;
+
+  Robot::updatePos(delta);
   OdometryTests();
+  m_leCheckExec->check(delta);
 
   leInputHandler = leController;
   //std::string snap = leInputHandler.getSnapshot();
   //leInputHandler = snap;
-  std::cout << leInputHandler.getSnapshot() << '\n';
-  checkAndExec();
-  recordActionsExec(leInputHandler, delta);
 }
 
 void Robot::TestPeriodic()
 {
   OdometryTests();
 }
+
+void Robot::checkAndExec() {m_leCheckExec->checkExec();}
+
 
 #ifndef RUNNING_FRC_TESTS
 int main()

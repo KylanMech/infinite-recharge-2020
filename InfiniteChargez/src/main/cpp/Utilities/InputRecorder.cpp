@@ -15,9 +15,9 @@ namespace utilities
     {
     }
 
-    void InputRecorder::snapFrom(HandlesChecksAndExecs &probablyARobot)
+    void InputRecorder::snapFrom(HandlesChecksAndExecs *probablyARobot)
     {
-        m_recordingBuffer << probablyARobot.getInputHandler().getSnapshot() << '\n';
+        m_recordingBuffer << probablyARobot->getInputHandler().getSnapshot() << '\n';
     }
 
     void InputRecorder::stopRecording(std::chrono::duration<double> delta)
